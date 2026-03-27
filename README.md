@@ -37,17 +37,17 @@ Way to AIC 不是教学，不是工具，而是一条所有电商人共同走的
 
 ```bash
 # Codex
-curl -fsSL https://raw.githubusercontent.com/restart2000/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --target codex --ref v1.0.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --target codex --ref v1.0.0
 ```
 
 ```bash
 # OpenClaw
-curl -fsSL https://raw.githubusercontent.com/restart2000/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --target openclaw --ref v1.0.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --target openclaw --ref v1.0.0
 ```
 
 ```bash
 # Install into a custom skills directory
-curl -fsSL https://raw.githubusercontent.com/restart2000/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --dest "$(pwd)/skills" --ref v1.0.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --dest "$(pwd)/skills" --ref v1.0.0
 ```
 
 安装后重启 Codex / OpenClaw。

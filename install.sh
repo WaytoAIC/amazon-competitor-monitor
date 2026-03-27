@@ -2,7 +2,7 @@
 
 set -eu
 
-REPO="restart2000/amazon-competitor-monitor"
+REPO="WaytoAIC/amazon-competitor-monitor"
 REF="main"
 SKILL_NAME="amazon-competitor-monitor"
 TARGET="auto"
@@ -23,7 +23,7 @@ Options:
   --target   Install target. auto|codex|openclaw. Default: auto
   --dest     Override the skills root directory. The script installs into DIR/amazon-competitor-monitor
   --ref      Branch or tag to install. Default: main
-  --repo     GitHub repo in OWNER/REPO form. Default: restart2000/amazon-competitor-monitor
+  --repo     GitHub repo in OWNER/REPO form. Default: WaytoAIC/amazon-competitor-monitor
   -h, --help Show this help
 EOF
 }
