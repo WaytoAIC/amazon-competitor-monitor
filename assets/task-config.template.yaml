@@ -1,0 +1,20 @@
+task_id: "__TASK_ID__"
+enabled: true
+priority: __PRIORITY__
+marketplace: "__MARKETPLACE__"
+monitor_type: "__MONITOR_TYPE__"
+targets:
+__TARGETS_BLOCK__
+mcp: "__MCP__"
+cadences:
+__CADENCE_BLOCK__
+comparison:
+  daily_lookback_days: 1
+  weekly_lookback_days: 7
+outputs:
+  daily_doc: "__DAILY_DOC__"
+  weekly_doc: "__WEEKLY_DOC__"
+  snapshot_dir: "__SNAPSHOT_DIR__"
+focus:
+__FOCUS_BLOCK__
+notes: "__NOTES__"
