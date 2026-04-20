@@ -1,52 +1,52 @@
-# __TASK_ID__ Daily Monitor
+# __TASK_ID__ 日报监控
 
-## Task Meta
+## 任务信息
 
-| Field | Value |
+| 字段 | 值 |
 | --- | --- |
 | Task ID | __TASK_ID__ |
-| Monitor Type | __MONITOR_TYPE__ |
-| Marketplace | __MARKETPLACE__ |
+| 监控类型 | __MONITOR_TYPE__ |
+| 站点 | __MARKETPLACE__ |
 | MCP | __MCP__ |
-| Targets | __TARGETS__ |
-| Cadence | daily |
-| Analysis Layers | __ANALYSIS_LAYERS__ |
-| Memory | __MEMORY_DIR__ |
+| 监控对象 | __TARGETS__ |
+| 节奏 | daily |
+| 分析层 | __ANALYSIS_LAYERS__ |
+| 长期记忆目录 | __MEMORY_DIR__ |
 
-## Run Log
+## 运行记录
 
 ### YYYY-MM-DD
 
-**Baseline:** [first run / previous snapshot date / previous report date / rolling memory]
+**对比基线：** [首次建档 / 上次快照日期 / 上次日报日期 / 长期记忆]
 
-#### 1. Executive Summary
+#### 1. 执行摘要
 
-- [Fill]
+- [填写本次最重要的 3-5 条中文结论]
 
-#### 2. KPI Snapshot
+#### 2. KPI 快照
 
-| Metric | Current | Previous | Delta | Historical Meaning | Notes |
+| 指标 | 本次 | 上次 | 变化 | 历史含义 | 备注 |
 | --- | --- | --- | --- | --- | --- |
-| [Metric] |  |  |  | [noise / continuation / anomaly / reversal / new signal] |  |
+| [指标] |  |  |  | [噪音 / 延续 / 异常 / 趋势反转 / 新信号] |  |
 
-#### 3. Key Changes
+#### 3. 关键变化
 
-| Change | Evidence | Historical Context | Impact | Action |
+| 变化 | 证据 | 历史上下文 | 影响 | 动作 |
 | --- | --- | --- | --- | --- |
-| [Change] |  |  |  |  |
+| [变化] |  |  |  |  |
 
-#### 4. Risks and Actions
+#### 4. 风险与动作
 
-| Risk / Opportunity | Evidence | Urgency | Owner Action |
+| 风险 / 机会 | 证据 | 紧急度 | 我方动作 |
 | --- | --- | --- | --- |
-| [Fill] |  |  |  |
+| [填写] |  |  |  |
 
-#### 5. Memory Impact
+#### 5. 长期记忆影响
 
-| Signal | Lifecycle Status | Memory Action | Hypothesis Impact | Weekly Review Needed |
+| 信号 | 生命周期状态 | 记忆动作 | 假设影响 | 是否需要周报复盘 |
 | --- | --- | --- | --- | --- |
-| [Signal key] | [new / watching / confirmed / reversed / archived] | [append / update / no-op] | [new / reinforce / contradict / none] | [yes / no] |
+| [signal_key] | [new / watching / confirmed / reversed / archived] | [追加 / 更新 / 不处理] | [新增 / 强化 / 反证 / 无] | [是 / 否] |
 
-#### 6. Next Watch
+#### 6. 下一步观察
 
-- [Fill]
+- [填写下一次运行需要重点对比的指标、关键词、评论主题或竞品动作]

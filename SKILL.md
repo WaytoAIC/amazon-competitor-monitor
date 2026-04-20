@@ -5,7 +5,7 @@ description: Build and operate long-running Amazon competitor monitoring workflo
 
 # Amazon 竞品监控 Skill
 
-## Overview
+## 概览
 
 为 Amazon 竞品监控提供一套可复用的任务配置、MCP 选型、长期记忆、日报/周报输出和工作区组织方式。它适合从零搭建监控方案，也适合在现有工作区里持续维护多个独立的竞品监控任务。
 
@@ -163,7 +163,7 @@ description: Build and operate long-running Amazon competitor monitoring workflo
 - 当前对手画像是什么
 - 我方应该采用田忌赛马、侧翼包抄、吸血鬼策略，还是继续观察
 
-### 6. 更新 memory
+### 6. 更新长期记忆
 
 报告完成后，必须更新任务 memory：
 
@@ -192,21 +192,23 @@ description: Build and operate long-running Amazon competitor monitoring workflo
 
 ## 输出要求
 
-- 中文为主
+- 报告正文必须使用中文输出，包括标题、表头、摘要、判断、动作建议和长期记忆摘要。
 - ASIN、品牌名、卖家名、关键词保留原文
+- `new`、`watching`、`confirmed`、`reversed`、`archived` 等机器可读状态值保留英文枚举。
 - 表格优先，尤其是：
   - KPI 快照
   - 变化点
   - 竞品对比
-  - Memory Impact
-  - Profit Model Radar
+  - 长期记忆影响
+  - 盈利模型雷达
   - 风险与动作
+- 不要使用英文模板标题，例如 `Executive Summary`、`KPI Snapshot`、`Profit Model Radar`；应写成 `执行摘要`、`KPI 快照`、`盈利模型雷达`。
 - 判断必须带证据来源或口径说明
 - 证据不足时明确写“不足以确认”
 - 建议必须面向执行，不要只给泛泛概念
 - 代理推断必须写置信度，不要写成确定事实
 
-## 何时继续读取 references
+## 何时继续读取参考文件
 
 遇到以下情况时，不要只依赖本文件，继续打开对应 references：
 

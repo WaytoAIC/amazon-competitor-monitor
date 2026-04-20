@@ -1,8 +1,10 @@
-# Reporting Playbook
+# 报告写法规则
 
-## Core Rule
+## 核心规则
 
 监控报告不是一次性总结，而是持续追加的运行日志。每次运行都应在原文档中追加一个新的日期分节，而不是覆盖旧内容。
+
+报告正文必须中文输出。标题、表头、结论、动作建议和 memory 复盘都用中文；ASIN、品牌、卖家、关键词、MCP 名称和机器状态枚举保留原文。
 
 每次生成报告前，先读取该任务的长期记忆。报告必须说明本次变化相对历史属于：
 
@@ -12,7 +14,7 @@
 - 趋势反转
 - 新信号
 
-## Daily Report
+## 日报
 
 日报优先回答四个问题：
 
@@ -23,23 +25,23 @@
 
 建议结构：
 
-1. `Executive Summary`
-2. `KPI Snapshot`
-3. `Key Changes`
-4. `Risks and Actions`
-5. `Memory Impact`
-6. `Next Watch`
+1. `执行摘要`
+2. `KPI 快照`
+3. `关键变化`
+4. `风险与动作`
+5. `长期记忆影响`
+6. `下一步观察`
 
 建议表格：
 
-| Block | Required |
+| 模块 | 是否必需 |
 | --- | --- |
-| `KPI Snapshot` | Yes |
-| `Key Changes` | Yes |
-| `Risk / Action` | Yes |
-| `Memory Impact` | Yes |
+| `KPI 快照` | 是 |
+| `关键变化` | 是 |
+| `风险与动作` | 是 |
+| `长期记忆影响` | 是 |
 
-## Weekly Report
+## 周报
 
 周报优先回答五个问题：
 
@@ -51,35 +53,35 @@
 
 建议结构：
 
-1. `Week Summary`
-2. `Scoreboard`
-3. `Structural Changes`
-4. `Long-Term Pattern Update`
-5. `Profit Model Radar`
-6. `Competitor Archetype`
-7. `Hypothesis Review`
-8. `Review / Keyword / Traffic Themes`
-9. `Actions for Next Week`
+1. `本周摘要`
+2. `对比记分牌`
+3. `结构性变化`
+4. `长期模式更新`
+5. `盈利模型雷达`
+6. `竞品画像`
+7. `假设复盘`
+8. `评论 / 关键词 / 流量主题`
+9. `策略地图与下周动作`
 
 建议表格：
 
-| Block | Required |
+| 模块 | 是否必需 |
 | --- | --- |
-| `Scoreboard` | Yes |
-| `Structural Changes` | Yes |
-| `Long-Term Pattern Update` | Yes |
-| `Hypothesis Review` | Yes |
-| `Action List` | Yes |
+| `对比记分牌` | 是 |
+| `结构性变化` | 是 |
+| `长期模式更新` | 是 |
+| `假设复盘` | 是 |
+| `动作清单` | 是 |
 
 当 `analysis_layers` 包含 `profit-model` 或 `strategy-radar` 时：
 
-| Block | Required |
+| 模块 | 是否必需 |
 | --- | --- |
-| `Profit Model Radar` | Yes |
-| `Competitor Archetype` | Yes |
-| `Strategy Map` | Yes |
+| `盈利模型雷达` | 是 |
+| `竞品画像` | 是 |
+| `策略地图` | 是 |
 
-## Comparison Logic
+## 对比逻辑
 
 日报基线：
 
@@ -95,7 +97,7 @@
 
 所有比较都要写具体日期，不要只写“较上周”或“较昨日”。
 
-## Monitor-Type Emphasis
+## 不同监控类型的侧重点
 
 ### `asin`
 
@@ -150,31 +152,33 @@
 - 头部集中度
 - 新品节奏和品牌覆盖变化
 
-## Memory Impact Rules
+## 长期记忆影响规则
 
-日报的 `Memory Impact` 必须说明：
+日报的 `长期记忆影响` 必须说明：
 
 - 是否新增长期信号
 - 是否更新已有信号的状态
 - 是否新增或修改假设
 - 是否需要在周报中复盘
 
-周报的 `Long-Term Pattern Update` 必须说明：
+周报的 `长期模式更新` 必须说明：
 
 - 哪些历史判断被强化
 - 哪些历史判断被推翻或降级
 - 哪些信号从 `new` 或 `watching` 进入 `confirmed`
 - 哪些信号应标记为 `archived`
 
-## Language and Evidence Rules
+## 语言与证据规则
 
 - 中文为主，保留 ASIN、品牌名、卖家名、关键词原文
+- 不要使用英文模板标题，例如 `Executive Summary`、`Scoreboard`、`Profit Model Radar`
+- 机器状态值可以保留英文枚举：`new`、`watching`、`confirmed`、`reversed`、`archived`
 - 每个关键判断至少有一个证据落点
 - 如果某项数据是“本月口径”或“滚动窗口”，要明确标注
 - 不足以确认时，直接写“不足以确认”
 - 供应链效率和资金实力默认是代理推断，必须写置信度
 
-## Action Style
+## 动作建议风格
 
 动作建议必须具体到能执行：
 

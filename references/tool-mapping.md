@@ -1,6 +1,6 @@
-# Tool Mapping
+# MCP 工具映射
 
-## Selection Rule
+## 选择规则
 
 先做这个判断：
 
@@ -8,16 +8,16 @@
 2. 只有当任务更偏“实时商品搜索、类目榜单、轻量卖家/品牌扫描”时再选 `sorftime_mcp`
 3. 一旦选定，就不要在该任务里混用另一个 MCP
 
-## MCP Choice Heuristics
+## MCP 选择启发
 
-| Situation | Preferred MCP | Why |
+| 场景 | 推荐 MCP | 原因 |
 | --- | --- | --- |
 | 需要更丰富的品牌、卖家、关键词、流量和竞争结构分析 | `sellersprite-mcp` | 工具面更全，适合做深度竞品监控 |
 | 需要更偏实时的商品列表、趋势和评论巡检 | `sorftime_mcp` | 商品检索和实时产品视角更直接 |
 | 需要品牌集中度、卖家池、流量结构这类深指标 | `sellersprite-mcp` | `sorftime_mcp` 不适合作为单任务唯一数据源完成这些结论 |
 | 需要多个 ASIN 的轻量对比和当前榜单位置巡检 | `sorftime_mcp` 或 `sellersprite-mcp` | 看任务重点；若要更深关键词或流量分析，仍优先 `sellersprite-mcp` |
 
-## Sellersprite Playbook
+## Sellersprite 使用规则
 
 ### `asin`
 
@@ -81,7 +81,7 @@
 - 品牌是否在某个类目形成更高集中度
 - 是否出现新的高潜或弱势款
 
-## Sorftime Playbook
+## Sorftime 使用规则
 
 ### `asin`
 
@@ -135,7 +135,7 @@
 - 热卖款和价格带变化
 - 轻量化的类目位置巡检
 
-## Daily vs Weekly Caveats
+## 日报与周报口径提醒
 
 - `sellersprite-mcp` 的很多数据是月度、滚动窗口或近似口径。
   - 用它做日报时，应表达为“相较上次抓取快照的变化”
@@ -145,11 +145,11 @@
   - 应拆成两个任务
   - 或统一降到一个 MCP 能稳定支持的分析深度
 
-## Minimum Output Pack
+## 最小输出包
 
 每次监控至少确保拿到这些信息：
 
-| Monitor type | Minimum pack |
+| 监控类型 | 最小信息包 |
 | --- | --- |
 | `asin` | 价格/优惠、趋势、评论摘要、流量结构或曝光关键词 |
 | `multi-asin` | 对比表、头部与尾部变化、至少 3 个最重要差异点 |
@@ -158,11 +158,11 @@
 
 如果当前 MCP 拿不到最低输出包中的关键证据，应在报告中明确写出能力边界，不要假设或脑补。
 
-## Profit Model Radar Mapping
+## 盈利模型雷达映射
 
 当任务启用 `profit-model` 或 `strategy-radar` 时，仍然遵守单任务单 MCP 规则。不要为了补齐雷达维度临时混用另一个 MCP。
 
-| Radar Dimension | Sellersprite Proxies | Sorftime Proxies | Confidence Rule |
+| 雷达维度 | Sellersprite 代理指标 | Sorftime 代理指标 | 置信度规则 |
 | --- | --- | --- | --- |
 | 流量效率 | `traffic_keyword_stat`、`traffic_source`、`traffic_extend`、`keyword_order`、关键词排名和流量占比 | 商品流量词、商品搜索表现、商品榜单位置 | 有关键词和流量来源证据可到 `high` |
 | 转化效率 | 评分、评论数、Review 内容、价格带、Coupon、Listing 质量 | 评分、评论、价格、商品详情和趋势 | 有 Review 与价格/评分共同证据可到 `high` |

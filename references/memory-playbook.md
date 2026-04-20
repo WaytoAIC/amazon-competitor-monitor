@@ -1,18 +1,20 @@
-# Memory Playbook
+# 长期记忆规则
 
-## Purpose
+## 目标
 
 长期监控的价值来自历史上下文，而不是单次抓数。每个任务必须把历史日报、周报、结构化快照、关键判断和待验证假设沉淀到 `memory/{task_id}/`。
 
-## Memory Files
+`rolling-memory.md` 面向人阅读，必须用中文写稳定模式、关键拐点、当前判断和待验证问题。`signal-ledger.jsonl` 和 `hypotheses.yaml` 是机器可读文件，字段名和状态枚举可以保留英文，但 `summary`、`evidence`、`statement` 应尽量使用中文。
 
-| File | Purpose |
+## 记忆文件
+
+| 文件 | 用途 |
 | --- | --- |
 | `rolling-memory.md` | 人工可读的长期记忆摘要，记录稳定模式、关键拐点和长期结论 |
 | `signal-ledger.jsonl` | 机器可读的信号流水，每行一个 JSON 对象 |
 | `hypotheses.yaml` | 待验证假设、状态、证据计数和复盘记录 |
 
-## Read Order
+## 读取顺序
 
 每次运行先读取：
 
@@ -26,28 +28,28 @@
 
 不要每次全文读取所有历史报告。更早历史只通过 `rolling-memory.md` 和 `signal-ledger.jsonl` 进入分析。
 
-## Signal Ledger Shape
+## 信号流水格式
 
 `signal-ledger.jsonl` 每行使用下面字段：
 
 ```json
-{"date":"2026-04-20","cadence":"daily","signal_key":"price-drop-hero-asin","dimension":"price","status":"new","summary":"Hero ASIN price dropped below historical floor","evidence":"Current price is lower than previous snapshot","confidence":"medium"}
+{"date":"2026-04-20","cadence":"daily","signal_key":"price-drop-hero-asin","dimension":"price","status":"new","summary":"Hero ASIN 价格跌破历史低位","evidence":"当前价格低于上次快照","confidence":"medium"}
 ```
 
 字段规则：
 
-| Field | Rule |
+| 字段 | 规则 |
 | --- | --- |
 | `date` | 运行日期，建议 ISO 日期 |
 | `cadence` | `daily` 或 `weekly` |
 | `signal_key` | 稳定短横线 ID，同类信号必须复用同一个 key |
 | `dimension` | `price`、`traffic`、`review`、`supply-chain`、`capital` 等 |
 | `status` | 只允许 `new`、`watching`、`confirmed`、`reversed`、`archived` |
-| `summary` | 一句话说明信号 |
-| `evidence` | 证据口径 |
+| `summary` | 一句话中文说明信号 |
+| `evidence` | 中文说明证据口径 |
 | `confidence` | `high`、`medium`、`low` |
 
-## Signal Lifecycle
+## 信号生命周期
 
 - `new`
   - 首次出现的新信号
@@ -62,7 +64,7 @@
 
 旧结论被推翻时标记 `reversed`，不要删除。
 
-## Daily Rules
+## 日报规则
 
 日报只做轻量 memory 更新：
 
@@ -74,7 +76,7 @@
   - 需要周报复盘
 - 普通日内小波动不进入 memory，只在日报正文说明
 
-## Weekly Rules
+## 周报规则
 
 周报必须复盘 memory：
 
@@ -84,7 +86,7 @@
 - 将被相反证据推翻的判断标为 `reversed`
 - 将不再影响当前策略的历史信号标为 `archived`
 
-## Hypothesis Handling
+## 假设处理
 
 假设用于表达尚未完全确认的战略判断，例如：
 
@@ -111,7 +113,7 @@
 - `reversed`
 - `archived`
 
-## Noise Control
+## 噪音控制
 
 不要把所有变化都写入 memory。优先保留：
 

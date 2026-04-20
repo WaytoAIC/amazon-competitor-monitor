@@ -6,6 +6,14 @@ The format is intentionally simple and optimized for release notes and repositor
 
 ## [Unreleased]
 
+## [v1.1.1] - 2026-04-20
+
+### Changed
+
+- Switched daily, weekly, and rolling-memory templates to Chinese section titles and Chinese placeholders
+- Strengthened skill and reporting rules so monitor outputs use Chinese by default while preserving ASINs, brand names, seller names, keywords, MCP names, and machine-readable status values
+- Updated `update_memory.py` to append Chinese labels in `rolling-memory.md`
+
 ## [v1.1.0] - 2026-04-20
 
 ### Added

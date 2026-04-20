@@ -90,10 +90,10 @@ def append_ledger(path, record):
 def append_rolling_memory(path, record):
     path.parent.mkdir(parents=True, exist_ok=True)
     if not path.exists():
-        path.write_text("# Rolling Memory\n\n## Event Log\n\n")
+        path.write_text("# 长期记忆\n\n## 事件日志\n\n")
     line = (
         f"- {record['date']} [{record['status']}] {record['signal_key']}: "
-        f"{record['summary']} Confidence: {record['confidence']}. Evidence: {record['evidence']}\n"
+        f"{record['summary']} 置信度：{record['confidence']}。证据：{record['evidence']}\n"
     )
     with path.open("a") as fh:
         fh.write(line)

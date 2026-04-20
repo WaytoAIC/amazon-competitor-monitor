@@ -1,6 +1,6 @@
-# Profit Model Playbook
+# 盈利模型雷达规则
 
-## Core Frame
+## 核心框架
 
 竞品监控不能只看前台运营指标。要用盈利模型拆解对手：
 
@@ -10,9 +10,9 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 
 这个公式是策略归因框架，不是精确财务公式。没有用户内部成本数据时，只能基于公开可观测代理指标推断。
 
-## Four Dimensions
+## 四个维度
 
-| Dimension | What It Explains | Observable Proxies |
+| 维度 | 解释什么问题 | 可观察代理指标 |
 | --- | --- | --- |
 | 流量效率 | 是否能以更低成本获得更精准流量 | 关键词覆盖、自然排名、广告入口、变体拆合、关联流量 |
 | 转化效率 | 流量进店后是否更容易成交且客单价更高 | 主图/场景/文案、Review 星级、评分数、价格带、品牌溢价 |
@@ -21,9 +21,9 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 
 供应链效率和资金实力通常是代理推断，置信度默认不超过 `medium`，除非用户补充内部数据。
 
-## Mapping To Competitor Deconstruction
+## 映射到竞品拆解
 
-### Product Solution -> Conversion Efficiency
+### 产品方案 -> 转化效率
 
 分析重点：
 
@@ -38,7 +38,7 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 - 对手是否靠更强转化效率盈利
 - 我方是否能通过图片、文案、场景或服务打它的弱点
 
-### Variation Strategy -> Traffic Efficiency
+### 变体策略 -> 流量效率
 
 分析重点：
 
@@ -52,7 +52,7 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 - 对手是否通过变体结构降低流量获取成本
 - 我方应该避开大词，还是用长尾词和关联流量切入
 
-### Store Layout -> Capital Efficiency
+### 店铺布局 -> 资金效率
 
 分析重点：
 
@@ -66,7 +66,7 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 - 对手低价是否真的亏损，还是资金周转模型更强
 - 我方是否应跟价、避战，还是只截取特定流量
 
-### Category Strategy -> Supply-Chain Efficiency
+### 类目策略 -> 供应链效率
 
 分析重点：
 
@@ -80,11 +80,11 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 - 对手是否具备供应链复用壁垒
 - 我方应该正面竞争，还是做差异化场景或单品极致
 
-## Radar Scoring
+## 雷达评分
 
 周报启用 `strategy-radar` 时，用 1-5 分评分：
 
-| Score | Meaning |
+| 分数 | 含义 |
 | --- | --- |
 | 1 | 明显弱势 |
 | 2 | 偏弱 |
@@ -101,9 +101,9 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 
 不要只给分数。
 
-## Competitor Archetypes
+## 竞品画像类型
 
-| Archetype | Pattern | Weakness |
+| 画像类型 | 模式 | 弱点 |
 | --- | --- | --- |
 | 流量型选手 | 流量效率高，广告或关键词覆盖强 | 广告成本上升时利润脆弱 |
 | 品牌型选手 | 转化效率高，能卖溢价 | 扩品和供应链速度可能较慢 |
@@ -111,7 +111,7 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 | 资金型选手 | 库存深、投放强、抗风险强 | 转化低或效率低时消耗大 |
 | 均衡型选手 | 四维都较强 | 只能找局部弱点或错位竞争 |
 
-## Strategy Map
+## 策略地图
 
 ### 田忌赛马
 
@@ -149,7 +149,7 @@ Amazon profit model = traffic efficiency x conversion efficiency x supply-chain 
 - 用更高评分、更强图片、更精准痛点文案承接流量
 - 分析差评，把对手痛点写进我方 Listing
 
-## Evidence Discipline
+## 证据纪律
 
 输出时必须分清：
 

@@ -1,76 +1,76 @@
-# __TASK_ID__ Weekly Monitor
+# __TASK_ID__ 周报监控
 
-## Task Meta
+## 任务信息
 
-| Field | Value |
+| 字段 | 值 |
 | --- | --- |
 | Task ID | __TASK_ID__ |
-| Monitor Type | __MONITOR_TYPE__ |
-| Marketplace | __MARKETPLACE__ |
+| 监控类型 | __MONITOR_TYPE__ |
+| 站点 | __MARKETPLACE__ |
 | MCP | __MCP__ |
-| Targets | __TARGETS__ |
-| Cadence | weekly |
-| Analysis Layers | __ANALYSIS_LAYERS__ |
-| Memory | __MEMORY_DIR__ |
+| 监控对象 | __TARGETS__ |
+| 节奏 | weekly |
+| 分析层 | __ANALYSIS_LAYERS__ |
+| 长期记忆目录 | __MEMORY_DIR__ |
 
-## Weekly Log
+## 周报记录
 
 ### YYYY-Www
 
-**Baseline:** [previous weekly report / first observed week / rolling memory]
+**对比基线：** [上次周报 / 首次观察周 / 长期记忆]
 
-#### 1. Week Summary
+#### 1. 本周摘要
 
-- [Fill]
+- [填写本周最重要的主线结论]
 
-#### 2. Scoreboard
+#### 2. 对比记分牌
 
-| Dimension | Winner | Loser | Evidence | What It Means |
+| 维度 | 领先方 | 落后方 | 证据 | 含义 |
 | --- | --- | --- | --- | --- |
-| [Dimension] |  |  |  |  |
+| [维度] |  |  |  |  |
 
-#### 3. Structural Changes
+#### 3. 结构性变化
 
-| Change | Evidence | Historical Pattern | Impact | Follow-up |
+| 变化 | 证据 | 历史模式 | 影响 | 后续跟进 |
 | --- | --- | --- | --- | --- |
-| [Change] |  |  |  |  |
+| [变化] |  |  |  |  |
 
-#### 4. Long-Term Pattern Update
+#### 4. 长期模式更新
 
-| Pattern / Signal | Previous State | Current Evidence | New State | Memory Update |
+| 模式 / 信号 | 上次状态 | 本周证据 | 新状态 | 记忆更新 |
 | --- | --- | --- | --- | --- |
-| [Signal key] | [new / watching / confirmed / reversed / archived] |  |  |  |
+| [signal_key] | [new / watching / confirmed / reversed / archived] |  |  |  |
 
-#### 5. Profit Model Radar
+#### 5. 盈利模型雷达
 
-| Radar Dimension | Score 1-5 | Evidence | Proxy Indicators | Confidence | Change vs Previous |
+| 雷达维度 | 评分 1-5 | 证据 | 代理指标 | 置信度 | 较上次变化 |
 | --- | --- | --- | --- | --- | --- |
-| Traffic Efficiency | 3 |  |  | [high / medium / low] |  |
-| Conversion Efficiency | 3 |  |  | [high / medium / low] |  |
-| Supply-Chain Efficiency | 3 |  |  | [high / medium / low] |  |
-| Capital Strength | 3 |  |  | [high / medium / low] |  |
+| 流量效率 | 3 |  |  | [high / medium / low] |  |
+| 转化效率 | 3 |  |  | [high / medium / low] |  |
+| 供应链效率 | 3 |  |  | [high / medium / low] |  |
+| 资金实力 | 3 |  |  | [high / medium / low] |  |
 
-#### 6. Competitor Archetype
+#### 6. 竞品画像
 
-| Archetype | Evidence | Weakness | Confidence |
+| 画像类型 | 证据 | 弱点 | 置信度 |
 | --- | --- | --- | --- |
-| [traffic-led / brand-led / factory-led / capital-led / balanced / insufficient evidence] |  |  |  |
+| [流量型 / 品牌型 / 工厂型 / 资金型 / 均衡型 / 证据不足] |  |  |  |
 
-#### 7. Hypothesis Review
+#### 7. 假设复盘
 
-| Hypothesis | Status | Evidence Count | Contradictions | Decision |
+| 假设 | 状态 | 证据次数 | 反证次数 | 决策 |
 | --- | --- | --- | --- | --- |
-| [Hypothesis] | [new / watching / confirmed / reversed / archived] |  |  |  |
+| [假设] | [new / watching / confirmed / reversed / archived] |  |  |  |
 
-#### 8. Review / Keyword / Traffic Themes
+#### 8. 评论 / 关键词 / 流量主题
 
-- [Fill]
+- [填写本周累计主题]
 
-#### 9. Strategy Map And Actions For Next Week
+#### 9. 策略地图与下周动作
 
-| Strategy | Use / Avoid | Reason | Next Action |
+| 策略 | 使用 / 避免 | 原因 | 下一步动作 |
 | --- | --- | --- | --- |
 | 田忌赛马 |  |  |  |
 | 侧翼包抄 |  |  |  |
 | 吸血鬼策略 |  |  |  |
-| Continue Watching |  |  |  |
+| 继续观察 |  |  |  |

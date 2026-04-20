@@ -1,35 +1,35 @@
-# __TASK_ID__ Rolling Memory
+# __TASK_ID__ 长期记忆
 
-## Task Meta
+## 任务信息
 
-| Field | Value |
+| 字段 | 值 |
 | --- | --- |
 | Task ID | __TASK_ID__ |
-| Monitor Type | __MONITOR_TYPE__ |
-| Marketplace | __MARKETPLACE__ |
+| 监控类型 | __MONITOR_TYPE__ |
+| 站点 | __MARKETPLACE__ |
 | MCP | __MCP__ |
-| Targets | __TARGETS__ |
+| 监控对象 | __TARGETS__ |
 
-## Stable Patterns
+## 稳定模式
 
-- [Fill after repeated evidence]
+- 暂无已确认稳定模式；需要多次证据后再沉淀。
 
-## Key Turning Points
+## 关键拐点
 
-- [Fill when a signal materially changes interpretation]
+- 暂无关键拐点；当信号显著改变判断时补充。
 
-## Current Competitor Read
+## 当前竞品判断
 
-- Traffic efficiency: [unknown]
-- Conversion efficiency: [unknown]
-- Supply-chain efficiency: [unknown]
-- Capital strength: [unknown]
-- Current archetype: [unknown]
+- 流量效率：暂无结论
+- 转化效率：暂无结论
+- 供应链效率：暂无结论
+- 资金实力：暂无结论
+- 当前画像：暂无结论
 
-## Open Questions
+## 待验证问题
 
-- [Fill]
+- 暂无待验证问题；生成日报或周报后补充。
 
-## Event Log
+## 事件日志
 
-- [Initialized]
+- 已初始化

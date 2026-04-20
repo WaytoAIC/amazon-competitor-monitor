@@ -67,17 +67,17 @@
 
 ```bash
 # Codex
-curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.0/install.sh | bash -s -- --target codex --ref v1.1.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.1/install.sh | bash -s -- --target codex --ref v1.1.1
 ```
 
 ```bash
 # OpenClaw
-curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.0/install.sh | bash -s -- --target openclaw --ref v1.1.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.1/install.sh | bash -s -- --target openclaw --ref v1.1.1
 ```
 
 ```bash
 # Install into a custom skills directory
-curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.0/install.sh | bash -s -- --dest "$(pwd)/skills" --ref v1.1.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.1/install.sh | bash -s -- --dest "$(pwd)/skills" --ref v1.1.1
 ```
 
 安装后重启 Codex / OpenClaw。
@@ -102,6 +102,7 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - 将历史日报、周报、快照和关键判断沉淀成长期任务记忆
 - 支持盈利模型雷达：流量效率、转化效率、供应链效率、资金实力
 - 支持信号生命周期：`new`、`watching`、`confirmed`、`reversed`、`archived`
+- 报告正文默认中文输出，ASIN、品牌名、卖家名、关键词等专有名词保留原文
 - 提供工作区初始化脚本，快速生成 `tasks/`、`docs/`、`snapshots/`、`memory/`、`logs/`
 
 ### 监控规则
@@ -113,6 +114,7 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - 多任务并行时，必须分别写入各自文档，不合并在同一份日报或周报中
 - 后续分析必须先读取该任务历史记忆，再判断本次变化是噪音、延续、异常、趋势反转还是新信号
 - 供应链效率和资金实力默认使用代理指标判断，必须标注置信度
+- 日报、周报和长期记忆的标题、表头、结论、动作建议都使用中文
 
 ### 仓库结构
 
@@ -194,7 +196,7 @@ Each task keeps its own daily report, weekly report, snapshot history, and long-
 - choosing between `sellersprite-mcp` and `sorftime_mcp`
 - preserving task memory across daily and weekly reports
 - scoring profit-model radar dimensions with evidence and confidence
-- generating Chinese-first monitoring reports backed by a clear evidence structure
+- generating Chinese monitoring reports backed by a clear evidence structure while preserving ASINs, brand names, seller names, and keywords in their original form
 
 ### Included files
 
