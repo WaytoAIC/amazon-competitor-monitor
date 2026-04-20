@@ -157,3 +157,23 @@
 | `brand` | 品牌商品池、头部款、价格带、口碑结构、上新节奏 |
 
 如果当前 MCP 拿不到最低输出包中的关键证据，应在报告中明确写出能力边界，不要假设或脑补。
+
+## Profit Model Radar Mapping
+
+当任务启用 `profit-model` 或 `strategy-radar` 时，仍然遵守单任务单 MCP 规则。不要为了补齐雷达维度临时混用另一个 MCP。
+
+| Radar Dimension | Sellersprite Proxies | Sorftime Proxies | Confidence Rule |
+| --- | --- | --- | --- |
+| 流量效率 | `traffic_keyword_stat`、`traffic_source`、`traffic_extend`、`keyword_order`、关键词排名和流量占比 | 商品流量词、商品搜索表现、商品榜单位置 | 有关键词和流量来源证据可到 `high` |
+| 转化效率 | 评分、评论数、Review 内容、价格带、Coupon、Listing 质量 | 评分、评论、价格、商品详情和趋势 | 有 Review 与价格/评分共同证据可到 `high` |
+| 供应链效率 | 上新节奏、变体结构、品类聚焦、价格带稳定性、断货或 BSR 波动 | 商品池、上新、价格趋势、类目趋势 | 默认不超过 `medium`，除非用户补内部供应链数据 |
+| 资金实力 | 库存深度代理、低价持续时间、补货节奏、广告覆盖、产品矩阵 | 商品池深度、榜单持续性、价格策略 | 默认不超过 `medium`，除非用户补库存和资金数据 |
+
+雷达输出必须写：
+
+- 分数：1-5
+- 证据：具体指标和日期口径
+- 代理指标：说明为什么该指标能代表对应维度
+- 置信度：`high`、`medium`、`low`
+
+如果证据不足，评分默认为 3，并写“不足以确认”。

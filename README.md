@@ -37,24 +37,24 @@ Way to AIC 不是教学，不是工具，而是一条所有电商人共同走的
 
 ```bash
 # Codex
-curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --target codex --ref v1.0.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.0/install.sh | bash -s -- --target codex --ref v1.1.0
 ```
 
 ```bash
 # OpenClaw
-curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --target openclaw --ref v1.0.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.0/install.sh | bash -s -- --target openclaw --ref v1.1.0
 ```
 
 ```bash
 # Install into a custom skills directory
-curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.0.0/install.sh | bash -s -- --dest "$(pwd)/skills" --ref v1.0.0
+curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/v1.1.0/install.sh | bash -s -- --dest "$(pwd)/skills" --ref v1.1.0
 ```
 
 安装后重启 Codex / OpenClaw。
 
 ---
 
-一个面向 Amazon 竞品监控的 Codex skill，支持按单个 ASIN、多 ASIN、特定卖家或特定品牌建立独立监控任务，并分别维护日报和周报文档。
+一个面向 Amazon 竞品监控的 Codex skill，支持按单个 ASIN、多 ASIN、特定卖家或特定品牌建立独立监控任务，并分别维护日报、周报、快照和长期记忆。
 
 ## 中文
 
@@ -68,8 +68,11 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
   - 特定品牌
 - 支持 `daily` / `weekly` 两种输出节奏
 - 强制一任务一 MCP，不混用数据源
-- 为每个任务分别维护独立的日报、周报和快照目录
-- 提供工作区初始化脚本，快速生成 `tasks/`、`docs/`、`snapshots/`、`logs/`
+- 为每个任务分别维护独立的日报、周报、快照和 memory
+- 将历史日报、周报、快照和关键判断沉淀成长期任务记忆
+- 支持盈利模型雷达：流量效率、转化效率、供应链效率、资金实力
+- 支持信号生命周期：`new`、`watching`、`confirmed`、`reversed`、`archived`
+- 提供工作区初始化脚本，快速生成 `tasks/`、`docs/`、`snapshots/`、`memory/`、`logs/`
 
 ### 监控规则
 
@@ -78,6 +81,8 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - 默认 MCP 是 `sellersprite-mcp`
 - 可选 MCP 是 `sorftime_mcp`
 - 多任务并行时，必须分别写入各自文档，不合并在同一份日报或周报中
+- 后续分析必须先读取该任务历史记忆，再判断本次变化是噪音、延续、异常、趋势反转还是新信号
+- 供应链效率和资金实力默认使用代理指标判断，必须标注置信度
 
 ### 仓库结构
 
@@ -86,7 +91,10 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - 任务 schema：[references/task-schema.md](./references/task-schema.md)
 - MCP 选型规则：[references/tool-mapping.md](./references/tool-mapping.md)
 - 报告写法规则：[references/reporting-playbook.md](./references/reporting-playbook.md)
+- 长期记忆规则：[references/memory-playbook.md](./references/memory-playbook.md)
+- 盈利模型雷达：[references/profit-model-playbook.md](./references/profit-model-playbook.md)
 - 工作区初始化脚本：[scripts/init_monitor_workspace.py](./scripts/init_monitor_workspace.py)
+- 信号记忆更新脚本：[scripts/update_memory.py](./scripts/update_memory.py)
 - 任务与报告模板：
   - [assets/task-config.template.yaml](./assets/task-config.template.yaml)
   - [assets/daily-report.template.md](./assets/daily-report.template.md)
@@ -99,6 +107,7 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - `用 $amazon-competitor-monitor 帮我建一个品牌监控任务，监控美国站 Anker，输出日报和周报`
 - `用 $amazon-competitor-monitor 帮我建一个多 ASIN 监控任务，只用 sellersprite-mcp`
 - `用 $amazon-competitor-monitor 更新这个卖家监控周报`
+- `用 $amazon-competitor-monitor 基于历史周报更新竞品盈利模型雷达`
 
 ### 初始化工作区示例
 
@@ -109,7 +118,21 @@ python3 scripts/init_monitor_workspace.py \
   --monitor-type brand \
   --target Anker \
   --mcp sellersprite-mcp \
-  --marketplace US
+  --marketplace US \
+  --radar
+```
+
+### 记录长期信号示例
+
+```bash
+python3 scripts/update_memory.py \
+  --workspace "$(pwd)" \
+  --task-id brand-anker-us \
+  --signal-key price-drop-hero-asin \
+  --dimension price \
+  --summary "Hero ASIN price dropped below its recent floor" \
+  --evidence "Observed in daily monitor versus previous snapshot" \
+  --confidence medium
 ```
 
 ### 许可说明
@@ -131,7 +154,7 @@ It supports building independent monitoring tasks for:
 - a specific seller
 - a specific brand
 
-Each task keeps its own daily report, weekly report, and snapshot history, and each task must use exactly one MCP source.
+Each task keeps its own daily report, weekly report, snapshot history, and long-term memory, and each task must use exactly one MCP source.
 
 ### What this skill helps with
 
@@ -139,6 +162,8 @@ Each task keeps its own daily report, weekly report, and snapshot history, and e
 - creating per-task YAML configs and report docs
 - enforcing one-task-one-MCP rules
 - choosing between `sellersprite-mcp` and `sorftime_mcp`
+- preserving task memory across daily and weekly reports
+- scoring profit-model radar dimensions with evidence and confidence
 - generating Chinese-first monitoring reports backed by a clear evidence structure
 
 ### Included files
@@ -148,7 +173,10 @@ Each task keeps its own daily report, weekly report, and snapshot history, and e
 - Task schema: [references/task-schema.md](./references/task-schema.md)
 - Tool mapping: [references/tool-mapping.md](./references/tool-mapping.md)
 - Reporting guide: [references/reporting-playbook.md](./references/reporting-playbook.md)
+- Memory guide: [references/memory-playbook.md](./references/memory-playbook.md)
+- Profit model guide: [references/profit-model-playbook.md](./references/profit-model-playbook.md)
 - Workspace bootstrap script: [scripts/init_monitor_workspace.py](./scripts/init_monitor_workspace.py)
+- Memory update script: [scripts/update_memory.py](./scripts/update_memory.py)
 
 ### One-command workspace bootstrap
 
@@ -159,7 +187,8 @@ python3 scripts/init_monitor_workspace.py \
   --monitor-type brand \
   --target Anker \
   --mcp sellersprite-mcp \
-  --marketplace US
+  --marketplace US \
+  --radar
 ```
 
 ### License note

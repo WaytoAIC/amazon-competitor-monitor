@@ -1,0 +1,7 @@
+{
+  "task_id": "__TASK_ID__",
+  "updated_at": "",
+  "review_cadence": "weekly",
+  "signal_confirmation_threshold": 3,
+  "hypotheses": []
+}

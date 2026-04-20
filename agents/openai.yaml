@@ -1,4 +1,4 @@
 interface:
   display_name: "Amazon Competitor Monitor"
-  short_description: "Monitor Amazon competitors by ASIN, seller, and brand"
+  short_description: "Long-term Amazon competitor monitoring with memory"
   default_prompt: "Use $amazon-competitor-monitor to set up a daily or weekly Amazon competitor monitoring task."

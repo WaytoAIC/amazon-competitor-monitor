@@ -9,6 +9,7 @@ workspace/
 ├── tasks/
 ├── docs/
 ├── snapshots/
+├── memory/
 └── logs/
 ```
 
@@ -18,6 +19,8 @@ workspace/
   - 每个任务独立维护日报和周报文档
 - `snapshots/`
   - 保存结构化快照，便于做跨日或跨周对比
+- `memory/`
+  - 一任务一目录，沉淀长期模式、信号流水和待验证假设
 - `logs/`
   - 保存运行日志、失败记录或辅助说明
 
@@ -35,6 +38,8 @@ workspace/
 | `cadences` | list | 至少一个值，允许 `daily`、`weekly` |
 | `outputs` | object | 至少包含 `daily_doc`、`weekly_doc`、`snapshot_dir` |
 | `focus` | list | 说明本任务要优先关注哪些维度 |
+| `analysis_layers` | list | 默认 `monitoring`，可选 `profit-model`、`strategy-radar` |
+| `memory` | object | 长期监控记忆配置，缺失时按默认值补齐 |
 
 ## Target Rules By Monitor Type
 
@@ -63,6 +68,61 @@ workspace/
 - `new-listing`
 - `seller-pool`
 - `brand-concentration`
+- `profit-model`
+- `strategy-radar`
+
+## Analysis Layers
+
+`analysis_layers` 只允许以下值：
+
+- `monitoring`
+- `profit-model`
+- `strategy-radar`
+
+默认值：
+
+```yaml
+analysis_layers:
+  - "monitoring"
+```
+
+启用盈利模型雷达时：
+
+```yaml
+analysis_layers:
+  - "monitoring"
+  - "profit-model"
+  - "strategy-radar"
+```
+
+## Memory Defaults
+
+缺少 `memory` 字段时，按下面默认值执行：
+
+```yaml
+memory:
+  enabled: true
+  recent_daily_reports: 7
+  recent_weekly_reports: 4
+  signal_confirmation_threshold: 3
+  hypothesis_review_cadence: "weekly"
+  rolling_memory_doc: "memory/{task_id}/rolling-memory.md"
+  signal_ledger: "memory/{task_id}/signal-ledger.jsonl"
+  hypotheses_doc: "memory/{task_id}/hypotheses.yaml"
+```
+
+字段含义：
+
+| Field | Rule |
+| --- | --- |
+| `enabled` | 默认开启；只有显式 `false` 才跳过 memory |
+| `recent_daily_reports` | 日报分析时读取的最近日报数量 |
+| `recent_weekly_reports` | 周报分析时读取的最近周报数量 |
+| `signal_confirmation_threshold` | 同类信号累计达到该次数后可从 `watching` 升级为 `confirmed` |
+| `hypothesis_review_cadence` | 默认每周复盘假设 |
+| `rolling_memory_doc` | 人工可读长期记忆 |
+| `signal_ledger` | JSONL 信号流水 |
+| `hypotheses_doc` | 待验证假设 |
 
 ## Canonical Example
 
@@ -85,6 +145,17 @@ outputs:
   daily_doc: "docs/brand-anker-us-daily.md"
   weekly_doc: "docs/brand-anker-us-weekly.md"
   snapshot_dir: "snapshots/brand-anker-us"
+memory:
+  enabled: true
+  recent_daily_reports: 7
+  recent_weekly_reports: 4
+  signal_confirmation_threshold: 3
+  hypothesis_review_cadence: "weekly"
+  rolling_memory_doc: "memory/brand-anker-us/rolling-memory.md"
+  signal_ledger: "memory/brand-anker-us/signal-ledger.jsonl"
+  hypotheses_doc: "memory/brand-anker-us/hypotheses.yaml"
+analysis_layers:
+  - "monitoring"
 focus:
   - "price"
   - "coupon"
@@ -99,6 +170,8 @@ notes: "Track hero ASIN movement, promotions, and new launches."
 
 - 一个 YAML 文件只放一个任务，不要做任务数组。
 - `daily_doc` 和 `weekly_doc` 建议始终保留，即使当前只启用其中一个 cadence。
+- `memory/{task_id}/` 必须与任务一一对应，不要跨任务复用。
+- 旧任务缺少 `memory` 或 `analysis_layers` 时视为合法，执行时按默认值补齐。
 - `snapshot_dir` 里的快照应按运行日期命名，例如：
   - `2026-03-27.daily.json`
   - `2026-W13.weekly.json`

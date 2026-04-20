@@ -6,6 +6,21 @@ The format is intentionally simple and optimized for release notes and repositor
 
 ## [Unreleased]
 
+## [v1.1.0] - 2026-04-20
+
+### Added
+
+- Long-term task memory with `rolling-memory.md`, `signal-ledger.jsonl`, and `hypotheses.yaml`
+- Profit-model radar guidance for traffic efficiency, conversion efficiency, supply-chain efficiency, and capital strength
+- `memory-playbook.md` and `profit-model-playbook.md` references
+- `--radar` and `--analysis-layer` support in the workspace initializer
+- `update_memory.py` helper for repeatable signal lifecycle updates
+
+### Changed
+
+- Daily and weekly report templates now include memory impact, long-term pattern updates, hypotheses, and strategy radar sections
+- Task schema now includes `memory` and `analysis_layers` while remaining compatible with v1.0.0 task configs
+
 ## [v1.0.0] - 2026-03-27
 
 First public release.

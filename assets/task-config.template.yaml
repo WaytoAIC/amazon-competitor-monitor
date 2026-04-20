@@ -15,6 +15,17 @@ outputs:
   daily_doc: "__DAILY_DOC__"
   weekly_doc: "__WEEKLY_DOC__"
   snapshot_dir: "__SNAPSHOT_DIR__"
+memory:
+  enabled: true
+  recent_daily_reports: 7
+  recent_weekly_reports: 4
+  signal_confirmation_threshold: 3
+  hypothesis_review_cadence: "weekly"
+  rolling_memory_doc: "__ROLLING_MEMORY_DOC__"
+  signal_ledger: "__SIGNAL_LEDGER__"
+  hypotheses_doc: "__HYPOTHESES_DOC__"
+analysis_layers:
+__ANALYSIS_LAYERS_BLOCK__
 focus:
 __FOCUS_BLOCK__
 notes: "__NOTES__"

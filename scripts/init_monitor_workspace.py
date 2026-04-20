@@ -9,7 +9,9 @@ from pathlib import Path
 VALID_MONITOR_TYPES = {"asin", "multi-asin", "seller", "brand"}
 VALID_MCPS = {"sellersprite-mcp", "sorftime_mcp"}
 VALID_CADENCES = ("daily", "weekly")
+VALID_ANALYSIS_LAYERS = {"monitoring", "profit-model", "strategy-radar"}
 DEFAULT_FOCUS = ["price", "coupon", "sales", "rating", "review", "keyword", "traffic"]
+DEFAULT_ANALYSIS_LAYERS = ["monitoring"]
 
 
 def slugify(value):
@@ -30,7 +32,7 @@ def split_csv(values):
 
 def ensure_dirs(workspace):
     created = []
-    for name in ("tasks", "docs", "snapshots", "logs"):
+    for name in ("tasks", "docs", "snapshots", "memory", "logs"):
         path = workspace / name
         existed = path.exists()
         path.mkdir(parents=True, exist_ok=True)
@@ -92,8 +94,33 @@ def write_file(path, content, force):
     path.write_text(content.rstrip() + "\n")
 
 
+def touch_file(path, force):
+    if path.exists() and not force:
+        return False
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("")
+    return True
+
+
 def load_template(name):
     return (Path(__file__).resolve().parent.parent / "assets" / name).read_text()
+
+
+def normalize_analysis_layers(raw_layers, use_radar):
+    layers = split_csv(raw_layers)
+    if not layers:
+        layers = list(DEFAULT_ANALYSIS_LAYERS)
+    if "monitoring" not in layers:
+        layers.insert(0, "monitoring")
+    if use_radar:
+        for layer in ("profit-model", "strategy-radar"):
+            if layer not in layers:
+                layers.append(layer)
+
+    invalid = [layer for layer in layers if layer not in VALID_ANALYSIS_LAYERS]
+    if invalid:
+        raise ValueError(f"invalid analysis layer(s): {', '.join(invalid)}")
+    return layers
 
 
 def build_task_files(args, workspace):
@@ -116,14 +143,21 @@ def build_task_files(args, workspace):
         raise ValueError(f"invalid cadence(s): {', '.join(invalid_cadences)}")
 
     focus = split_csv(args.focus) or DEFAULT_FOCUS
+    analysis_layers = normalize_analysis_layers(args.analysis_layer, args.radar)
     task_id = normalize_task_id(args.task_id)
     daily_doc = args.daily_doc or f"docs/{task_id}-daily.md"
     weekly_doc = args.weekly_doc or f"docs/{task_id}-weekly.md"
     snapshot_dir = args.snapshot_dir or f"snapshots/{task_id}"
+    memory_dir = f"memory/{task_id}"
+    rolling_memory_doc = f"{memory_dir}/rolling-memory.md"
+    signal_ledger = f"{memory_dir}/signal-ledger.jsonl"
+    hypotheses_doc = f"{memory_dir}/hypotheses.yaml"
 
     task_template = load_template("task-config.template.yaml")
     daily_template = load_template("daily-report.template.md")
     weekly_template = load_template("weekly-report.template.md")
+    rolling_template = load_template("rolling-memory.template.md")
+    hypotheses_template = load_template("hypotheses.template.yaml")
 
     replacements = {
         "TASK_ID": task_id,
@@ -136,6 +170,12 @@ def build_task_files(args, workspace):
         "DAILY_DOC": daily_doc,
         "WEEKLY_DOC": weekly_doc,
         "SNAPSHOT_DIR": snapshot_dir,
+        "MEMORY_DIR": memory_dir,
+        "ROLLING_MEMORY_DOC": rolling_memory_doc,
+        "SIGNAL_LEDGER": signal_ledger,
+        "HYPOTHESES_DOC": hypotheses_doc,
+        "ANALYSIS_LAYERS_BLOCK": render_list_block(analysis_layers, "  "),
+        "ANALYSIS_LAYERS": ", ".join(analysis_layers),
         "FOCUS_BLOCK": render_list_block(focus, "  "),
         "NOTES": args.notes or "",
         "TARGETS": ", ".join(targets),
@@ -149,6 +189,22 @@ def build_task_files(args, workspace):
     snapshot_path = workspace / snapshot_dir
     snapshot_path.mkdir(parents=True, exist_ok=True)
     created.append(snapshot_path)
+
+    memory_path = workspace / memory_dir
+    memory_path.mkdir(parents=True, exist_ok=True)
+    created.append(memory_path)
+
+    rolling_path = workspace / rolling_memory_doc
+    write_file(rolling_path, render_template(rolling_template, replacements), args.force)
+    created.append(rolling_path)
+
+    ledger_path = workspace / signal_ledger
+    if touch_file(ledger_path, args.force):
+        created.append(ledger_path)
+
+    hypotheses_path = workspace / hypotheses_doc
+    write_file(hypotheses_path, render_template(hypotheses_template, replacements), args.force)
+    created.append(hypotheses_path)
 
     if "daily" in cadences:
         daily_path = workspace / daily_doc
@@ -174,6 +230,8 @@ def parse_args():
     parser.add_argument("--mcp", default="sellersprite-mcp", choices=sorted(VALID_MCPS))
     parser.add_argument("--marketplace", default="US")
     parser.add_argument("--cadence", action="append", default=[], help="Repeat or comma-separate cadences")
+    parser.add_argument("--analysis-layer", action="append", default=[], help="Repeat or comma-separate analysis layers")
+    parser.add_argument("--radar", action="store_true", help="Enable profit-model and strategy-radar analysis layers")
     parser.add_argument("--priority", type=int, default=50)
     parser.add_argument("--daily-doc")
     parser.add_argument("--weekly-doc")
