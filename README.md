@@ -1,20 +1,55 @@
 # amazon-competitor-monitor
 
-## Way to AIC | 通往AI电商之路
+## 🚀 Way to AIC | 通往 AI 电商之路
+---
+### 🌐 官网 Website
+- https://waytoaic.com  
+- https://www.waytoaic.com  
+---
 
-Fixed README prefix for Way to AIC repositories.
+### 👥 社群招募 Community
+`Way to AIC 社群招募 | WaytoAIC.com`
 
-- 官网 / Website: [waytoaic.com](https://waytoaic.com) | [www.waytoaic.com](https://www.waytoaic.com)
-- 社群招募 / Community: `Way to AIC社群招募 | WaytoAIC.com`
-- 公众号 / WeChat Official Account: `维正 WaytoAIC`
-- 知识星球 / Xiaozhixing: `AI电商之路 WaytoAIC`
-- AIC = `AI Commerce`
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d9f8bbf4-2056-4780-975d-86c885b52bab" width="70%">
+</p>
 
-在 AI 重塑商业的时代，我们希望和每一个拥抱 AI 的卖家，找到场景，定义问题，积累能力，设计系统，共同通往 AI 电商之路。
+---
 
-Way to AIC 不是教学，不是工具，而是一条所有电商人共同走的进化之路。
+### 📣 公众号 WeChat Official Account
+`维正 WaytoAIC`
 
-后续 Way to AIC 相关 GitHub 项目，默认都应在 README 顶部保留这一前缀区块。
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/71c71a5c-e68a-4f30-9afb-f2b056619991" width="300">
+</p>
+
+---
+
+### 🧠 知识星球 Xiaozhixing
+`AI电商之路 WaytoAIC`
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9eccef07-0e84-45a7-a415-affcb18c928d" width="200">
+  <img src="https://github.com/user-attachments/assets/4e99fbc3-1981-4fee-b113-c9821141102d" width="400">
+</p>
+
+---
+
+### 🧩 About Way to AIC
+
+**AIC = AI Commerce**
+
+在 AI 重塑商业的时代，我们希望和每一个拥抱 AI 的卖家：
+
+- 找到场景  
+- 定义问题  
+- 积累能力  
+- 设计系统  
+
+共同通往 AI 电商之路。
+
+> Way to AIC 不是教学，不是工具，  
+> 而是一条所有电商人共同走的进化之路。
 
 ### WaytoAIC 理念 | Principles
 
@@ -28,11 +63,6 @@ Way to AIC 不是教学，不是工具，而是一条所有电商人共同走的
 | 技巧是术，系统才是道，决定卖家的上限。 | Tricks are tactical; systems define long-term leverage and ceiling. |
 | 共创优于独行 | Co-creation over solo progress |
 | 我们相信，真正的进化发生在共同探索的过程中。 | Real evolution happens through shared exploration. |
-
----
-
-中文 | [English](#english)
-
 ## Quick Install
 
 ```bash
