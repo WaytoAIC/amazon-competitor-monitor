@@ -105,6 +105,10 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - 支持将日报 / 周报压缩成展示卡，输出同款风格的 HTML + PNG
 - 报告正文默认中文输出，ASIN、品牌名、卖家名、关键词等专有名词保留原文
 - 提供工作区初始化脚本，快速生成 `tasks/`、`docs/`、`snapshots/`、`memory/`、`logs/`
+  <img width="1268" height="953" alt="image" src="https://github.com/user-attachments/assets/2bfa19b5-6f57-4d40-9b21-ecdebf06dc38" />
+  <img width="1268" height="953" alt="image" src="https://github.com/user-attachments/assets/00560982-95d7-42ae-8364-dcbfbb2de2cf" />
+
+
 
 ### 监控规则
 
