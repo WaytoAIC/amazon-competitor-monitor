@@ -120,6 +120,7 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 
 - 主 skill 入口：[SKILL.md](./SKILL.md)
 - UI 元数据：[agents/openai.yaml](./agents/openai.yaml)
+- 完整中文说明与使用 SOP：[docs/usage-sop.zh.md](./docs/usage-sop.zh.md)
 - 任务 schema：[references/task-schema.md](./references/task-schema.md)
 - MCP 选型规则：[references/tool-mapping.md](./references/tool-mapping.md)
 - 报告写法规则：[references/reporting-playbook.md](./references/reporting-playbook.md)
