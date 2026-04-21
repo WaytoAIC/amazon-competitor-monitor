@@ -19,6 +19,8 @@ description: Build and operate long-running Amazon competitor monitoring workflo
   - 选择 MCP、确定抓数范围和指标时必读
 - `references/reporting-playbook.md`
   - 生成或更新日报/周报时必读
+- `references/card-playbook.md`
+  - 用户要求展示卡、HTML 卡片、PNG 卡片、汇报图或“用于展示”时必读
 - `references/memory-playbook.md`
   - 执行长期监控、更新信号生命周期或维护任务记忆时必读
 - `references/profit-model-playbook.md`
@@ -33,6 +35,8 @@ description: Build and operate long-running Amazon competitor monitoring workflo
   - 初始化监控工作区或创建单个监控任务时优先使用
 - `scripts/update_memory.py`
   - 将已确认的监控信号写入 `signal-ledger.jsonl` 并更新 `hypotheses.yaml`
+- `scripts/generate_report_card.py`
+  - 将已生成的日报/周报快照渲染为同款展示卡，输出 HTML + PNG
 
 ## 不可打破的约束
 
@@ -190,6 +194,45 @@ description: Build and operate long-running Amazon competitor monitoring workflo
 - 不因为目标相似就合并报告
 - 如果用户需要总览，单独生成 master summary，不要塞回各任务文档
 
+### 8. 生成展示卡
+
+当用户要求：
+
+- “生成 HTML 卡片”
+- “生成 PNG 卡片”
+- “日报 / 周报做成展示卡”
+- “用于展示 / 汇报 / PPT / 飞书展示”
+
+则读取 `references/card-playbook.md`，优先运行：
+
+```bash
+python3 {baseDir}/scripts/generate_report_card.py \
+  --workspace <workspace> \
+  --task-id <task_id> \
+  --cadence daily \
+  --date YYYY-MM-DD \
+  --screenshot
+```
+
+周报使用：
+
+```bash
+python3 {baseDir}/scripts/generate_report_card.py \
+  --workspace <workspace> \
+  --task-id <task_id> \
+  --cadence weekly \
+  --screenshot
+```
+
+输出必须成对出现：
+
+- `docs/{task_id}-{date}-daily-card.html`
+- `docs/{task_id}-{date}-daily-card.png`
+- `docs/{task_id}-{week_label}-weekly-card.html`
+- `docs/{task_id}-{week_label}-weekly-card.png`
+
+如果当前机器无法导出 PNG，至少保留 HTML，并在最终回复说明 PNG 导出失败的原因。
+
 ## 输出要求
 
 - 报告正文必须使用中文输出，包括标题、表头、摘要、判断、动作建议和长期记忆摘要。
@@ -207,6 +250,7 @@ description: Build and operate long-running Amazon competitor monitoring workflo
 - 证据不足时明确写“不足以确认”
 - 建议必须面向执行，不要只给泛泛概念
 - 代理推断必须写置信度，不要写成确定事实
+- 展示卡必须保留中文结论和关键证据，输出 HTML + PNG；不要把完整日报/周报原文塞进卡片，应压缩成可展示的一屏内容。
 
 ## 何时继续读取参考文件
 
@@ -218,6 +262,8 @@ description: Build and operate long-running Amazon competitor monitoring workflo
   - 读取 `references/tool-mapping.md`
 - 需要正式生成日报或周报结构
   - 读取 `references/reporting-playbook.md`
+- 需要生成展示卡、HTML、PNG、汇报图
+  - 读取 `references/card-playbook.md`
 - 需要维护长期记忆、信号生命周期或历史假设
   - 读取 `references/memory-playbook.md`
 - 任务启用 `profit-model` 或 `strategy-radar`

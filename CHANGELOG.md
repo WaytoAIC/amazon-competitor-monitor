@@ -6,6 +6,12 @@ The format is intentionally simple and optimized for release notes and repositor
 
 ## [Unreleased]
 
+### Added
+
+- Added report-card generation rules for converting monitor daily and weekly outputs into compact HTML + PNG presentation cards
+- Added `references/card-playbook.md` for visual, content, and evidence rules for display cards
+- Added `scripts/generate_report_card.py` to render daily and weekly snapshots as single-file HTML cards and optional 1280 x 820 PNG screenshots
+
 ## [v1.1.1] - 2026-04-20
 
 ### Changed

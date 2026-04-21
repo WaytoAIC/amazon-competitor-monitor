@@ -1,4 +1,4 @@
 interface:
   display_name: "Amazon Competitor Monitor"
   short_description: "中文 Amazon 竞品长期监控与记忆沉淀"
-  default_prompt: "用 $amazon-competitor-monitor 建立或更新一个 Amazon 竞品监控任务，并用中文输出日报或周报。"
+  default_prompt: "用 $amazon-competitor-monitor 建立或更新一个 Amazon 竞品监控任务，并用中文输出日报、周报或 HTML+PNG 展示卡。"

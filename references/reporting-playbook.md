@@ -191,3 +191,19 @@
 - 继续观察动作
 
 避免写成纯抽象建议，例如“继续优化运营”。
+
+## 展示卡输出
+
+当用户需要将日报或周报用于展示时，不要重新改写原报告结构。先保留原 Markdown 报告，再额外生成一组展示卡文件：
+
+| 文件 | 规则 |
+| --- | --- |
+| HTML | `docs/{task_id}-{date}-daily-card.html` 或 `docs/{task_id}-{week_label}-weekly-card.html` |
+| PNG | 同名 `.png`，默认 1280 x 820 |
+
+展示卡只保留最关键内容：
+
+- 日报：标题判断、KPI、关键词 / 排名变化、风险动作、长期记忆状态
+- 周报：主线结论、盈利模型雷达、机会风险矩阵、策略地图
+
+优先使用 `scripts/generate_report_card.py` 读取快照生成，避免每次手写 HTML。详细规则见 `references/card-playbook.md`。

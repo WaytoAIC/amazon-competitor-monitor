@@ -102,6 +102,7 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - 将历史日报、周报、快照和关键判断沉淀成长期任务记忆
 - 支持盈利模型雷达：流量效率、转化效率、供应链效率、资金实力
 - 支持信号生命周期：`new`、`watching`、`confirmed`、`reversed`、`archived`
+- 支持将日报 / 周报压缩成展示卡，输出同款风格的 HTML + PNG
 - 报告正文默认中文输出，ASIN、品牌名、卖家名、关键词等专有名词保留原文
 - 提供工作区初始化脚本，快速生成 `tasks/`、`docs/`、`snapshots/`、`memory/`、`logs/`
 
@@ -124,10 +125,12 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - 任务 schema：[references/task-schema.md](./references/task-schema.md)
 - MCP 选型规则：[references/tool-mapping.md](./references/tool-mapping.md)
 - 报告写法规则：[references/reporting-playbook.md](./references/reporting-playbook.md)
+- 展示卡规则：[references/card-playbook.md](./references/card-playbook.md)
 - 长期记忆规则：[references/memory-playbook.md](./references/memory-playbook.md)
 - 盈利模型雷达：[references/profit-model-playbook.md](./references/profit-model-playbook.md)
 - 工作区初始化脚本：[scripts/init_monitor_workspace.py](./scripts/init_monitor_workspace.py)
 - 信号记忆更新脚本：[scripts/update_memory.py](./scripts/update_memory.py)
+- 日报 / 周报展示卡脚本：[scripts/generate_report_card.py](./scripts/generate_report_card.py)
 - 任务与报告模板：
   - [assets/task-config.template.yaml](./assets/task-config.template.yaml)
   - [assets/daily-report.template.md](./assets/daily-report.template.md)
@@ -141,6 +144,7 @@ curl -fsSL https://raw.githubusercontent.com/WaytoAIC/amazon-competitor-monitor/
 - `用 $amazon-competitor-monitor 帮我建一个多 ASIN 监控任务，只用 sellersprite-mcp`
 - `用 $amazon-competitor-monitor 更新这个卖家监控周报`
 - `用 $amazon-competitor-monitor 基于历史周报更新竞品盈利模型雷达`
+- `用 $amazon-competitor-monitor 把这个 ASIN 日报和周报分别生成 HTML+PNG 展示卡`
 
 ### 初始化工作区示例
 
@@ -166,6 +170,25 @@ python3 scripts/update_memory.py \
   --summary "Hero ASIN price dropped below its recent floor" \
   --evidence "Observed in daily monitor versus previous snapshot" \
   --confidence medium
+```
+
+### 生成展示卡示例
+
+```bash
+python3 scripts/generate_report_card.py \
+  --workspace "$(pwd)" \
+  --task-id brand-anker-us \
+  --cadence daily \
+  --date 2026-04-21 \
+  --screenshot
+```
+
+```bash
+python3 scripts/generate_report_card.py \
+  --workspace "$(pwd)" \
+  --task-id brand-anker-us \
+  --cadence weekly \
+  --screenshot
 ```
 
 ### 许可说明
@@ -197,6 +220,7 @@ Each task keeps its own daily report, weekly report, snapshot history, and long-
 - choosing between `sellersprite-mcp` and `sorftime_mcp`
 - preserving task memory across daily and weekly reports
 - scoring profit-model radar dimensions with evidence and confidence
+- rendering compact daily and weekly presentation cards as HTML + PNG
 - generating Chinese monitoring reports backed by a clear evidence structure while preserving ASINs, brand names, seller names, and keywords in their original form
 
 ### Included files
@@ -206,10 +230,12 @@ Each task keeps its own daily report, weekly report, snapshot history, and long-
 - Task schema: [references/task-schema.md](./references/task-schema.md)
 - Tool mapping: [references/tool-mapping.md](./references/tool-mapping.md)
 - Reporting guide: [references/reporting-playbook.md](./references/reporting-playbook.md)
+- Report card guide: [references/card-playbook.md](./references/card-playbook.md)
 - Memory guide: [references/memory-playbook.md](./references/memory-playbook.md)
 - Profit model guide: [references/profit-model-playbook.md](./references/profit-model-playbook.md)
 - Workspace bootstrap script: [scripts/init_monitor_workspace.py](./scripts/init_monitor_workspace.py)
 - Memory update script: [scripts/update_memory.py](./scripts/update_memory.py)
+- HTML + PNG card script: [scripts/generate_report_card.py](./scripts/generate_report_card.py)
 
 ### One-command workspace bootstrap
 
